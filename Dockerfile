@@ -46,7 +46,7 @@ RUN set -x \
 
 
 # Install docker-compose with PIP
-pip install docker-compose
+RUN pip install docker-compose
 
 
 ENV HOME $JENKINS_HOME
