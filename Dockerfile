@@ -3,8 +3,8 @@ MAINTAINER Ovi Isai <ovidiu.isai@gmail.com>
 
 ENV JENKINS_HOME /home/jenkins
 ENV JENKINS_REMOTNG_VERSION 2.7.1
-ENV JAVA_VERSION 8u92
-ENV JAVA_ALPINE_VERSION 8.92.14-r1
+ENV JAVA_VERSION 8u111
+ENV JAVA_ALPINE_VERSION 8.111.14-r0
 
 ENV DOCKER_HOST tcp://0.0.0.0:2375
 
@@ -42,7 +42,7 @@ ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openj
 RUN set -x \
     && apk add --no-cache \
         openjdk8="$JAVA_ALPINE_VERSION" \
-&& [ "$JAVA_HOME" = "$(docker-java-home)" ] 
+&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
 
 
 # Install docker-compose with PIP
@@ -53,7 +53,7 @@ ENV HOME $JENKINS_HOME
 
 # Add jenkins user
 RUN adduser -D -h $JENKINS_HOME -s /bin/sh jenkins jenkins \
-    && chmod a+rwx $JENKINS_HOME 
+    && chmod a+rwx $JENKINS_HOME
 
 # Allow jenkins user to run docker as root
 RUN echo "jenkins ALL=(ALL) NOPASSWD: /usr/local/bin/docker" > /etc/sudoers.d/00jenkins \
